@@ -100,7 +100,7 @@ function wordsLvl() {
 wordsLvl();
 
 levels.addEventListener("change", function () {
-  // changeLvl();
+  changeLvl();
   wordsLvl();
 });
 changeLvl();
