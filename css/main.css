@@ -70,6 +70,10 @@ body{
 {
     background-color: #c5d9ed;
 }
+.dark .select,
+.dark .top-message{
+background-color:#00131c;
+}
 .dark .start:hover{
     background-color: #135e96;
     color: #fff
