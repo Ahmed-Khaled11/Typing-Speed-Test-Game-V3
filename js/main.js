@@ -1,4 +1,3 @@
-
 var words = [];
 var wordsEz = [
   "Brother",
@@ -79,8 +78,8 @@ let finshWord = document.querySelector(".finalResult");
 // level of the game
 const lvls = {
   Easy: 5,
-  Normal: 3,
-  Hard: 2,
+  Normal: 4,
+  Hard: 3,
 };
 
 // catch select box
@@ -151,10 +150,10 @@ function finalResult(span, txt, cls) {
   finshWord.appendChild(myspan);
   input.remove();
 }
-// function saveing score to localStorage  
+// function saveing score to localStorage
 function saveScore() {
   window.localStorage.setItem("score", scoreGot.innerHTML);
-  console.log(window.localStorage.getItem("score"))
+  console.log(window.localStorage.getItem("score"));
 }
 // function start The playGame
 function startGame() {
@@ -180,11 +179,20 @@ function startGame() {
     }
   }, 1000);
 }
+// Start Dark Mode
+let darkBtn = document.querySelector("svg");
+let darkOn = document.querySelector(".darkOn");
+let darkOff = document.querySelector(".darkOff");
 
-// Start Dark Mode 
-let darkBtn = document.querySelector(".fa-solid");
-darkBtn.onclick = function () { 
-  document.body.classList.toggle("dark")  
+darkBtn.onclick = function () {
+  DarkMode("none", "block");
+};
+darkOff.addEventListener("click", () => {
+  DarkMode("block", "none");
+});
+function DarkMode(block, none) {
+  document.body.classList.toggle("dark");
+  darkOn.style.display = block;
+  darkOff.style.display = none;
 }
-
-// randomWords()
+// End Dark Mode
