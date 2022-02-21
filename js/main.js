@@ -85,7 +85,6 @@ const lvls = {
 
 // catch select box
 let levels = document.querySelector("select");
-
 // function to change Array of [Words]
 function wordsLvl() {
   if (levels.value === "Easy") {
