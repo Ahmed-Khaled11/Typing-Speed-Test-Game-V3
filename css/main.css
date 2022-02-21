@@ -100,6 +100,13 @@ font-family: 'Cairo', 'sans-serif';
     padding: 0 15px;
     max-width: 900px;
 }
+@media (max-width:767px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 header{
     position: relative;
     background-color: var(--main-color);
@@ -262,6 +269,7 @@ input:focus::placeholder{
     .upcoming-words{
         padding: 10px;
         font-size: 14px;
+        order: 2;
     }
 }
 .upcoming-words span{
