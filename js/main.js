@@ -105,9 +105,11 @@ levels.addEventListener("change", function () {
 changeLvl();
 // function to change levels [Easy, normal, Hard]
 function changeLvl() {
+console.log(levels.selectedOptions[0].dataset.level);
+
   let defaultLvlName = levels.value;
   let defaultLvlSec = lvls[defaultLvlName];
-  lvlName.innerHTML = defaultLvlName;
+  lvlName.innerHTML = levels.selectedOptions[0].dataset.level;
   lvlSec.innerHTML = defaultLvlSec;
   controlTime.innerHTML = defaultLvlSec;
 }
