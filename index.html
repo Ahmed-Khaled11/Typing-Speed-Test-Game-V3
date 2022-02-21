@@ -17,6 +17,7 @@
     <div class="game">
         
         <header>Typing Speed Test Game
+    <a href="./indexAR.html">AR</a>
             <svg xmlns="http://www.w3.org/2000/svg" style="color: #daeefd;" width="25" height="25" fill="currentColor" class="bi darkOn bi-moon-stars-fill"
                 viewBox="0 0 16 16">
                 <path
@@ -35,9 +36,9 @@
                 <label for="Levels">Select A Level</label>
                 <select class="select" name="Levels" id="Levels">
                     <div class="myop">
-                                            <option value="Easy">Easy</option>
-                                            <option value="Normal">Normal</option>
-                                            <option value="Hard">Hard</option>
+                                            <option data-level="Easy" value="Easy">Easy</option>
+                                            <option data-level="Normal" value="Normal">Normal</option>
+                                            <option data-level="Hard" value="Hard">Hard</option>
                     </div>
                 </select>
             </div>
@@ -54,9 +55,10 @@
                 <div class="time">Time Left: <span></span> Secounds</div>
                 <div class="score"> <span class="got">0</span> From <span class="total"></span></div>
             </div>
-            <div class="finalResult"></div>
+            <div class="finalResult" data-languagewin="You'r Greate !" data-lose="Game Over !"></div>
         </div>
     </div>
+
 </body>
 <script src="./js/main.js"> </script>
 </html>
