@@ -14,30 +14,27 @@
 body{
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 /* start Dark Mode Style  */
 /* Start Switch Dark Mode  */
- i{
-    content: "\e227";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 35px;
-    padding: 5px;
-    border-radius: 50%;
+ svg{
     color: #fff;
     position: absolute;
     right: 15px;
+    bottom: 32px;
     transition: 0.3s;
     cursor: pointer;
 }
 @media (max-width:767px){
-     i{
-        font-size: 25px;
+     svg{
+        width:20px;
         margin-left: 10px;
+        bottom: 20px;
     }
 }
- i:hover{
-    color: #00131c;
+ svg:hover{
+    color: #002b3f;
 }
 /* End Switch Dark Mode  */
 .dark {
@@ -99,7 +96,8 @@ font-family: 'Cairo', 'sans-serif';
     min-height: 100vh;
 }
 .container{
-    margin: auto;
+    margin: 0 auto;
+    padding: 0 15px;
     max-width: 900px;
 }
 header{
