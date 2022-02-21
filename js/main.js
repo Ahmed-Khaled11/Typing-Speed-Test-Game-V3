@@ -74,7 +74,8 @@ let controlTime = document.querySelector(".time span");
 let scoreGot = document.querySelector(".score .got");
 let scoreTotal = document.querySelector(".score .total");
 let finshWord = document.querySelector(".finalResult");
-
+let finshWordWin = finshWord.dataset.win;
+let finshWordLose = finshWord.dataset.lose;
 // level of the game
 const lvls = {
   Easy: 5,
@@ -170,10 +171,10 @@ function startGame() {
         if (words.length > 0) {
           randomWords();
         } else {
-          finalResult("span", "You'r Greate !", "Successful");
+          finalResult("span", finshWordWin, "Successful");
         }
       } else {
-        finalResult("span", "Game Over !", "unSuccessful");
+        finalResult("span", finshWordLose, "unSuccessful");
       }
       saveScore();
     }
