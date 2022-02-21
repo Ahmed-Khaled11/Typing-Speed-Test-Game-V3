@@ -34,7 +34,7 @@ body{
     }
 }
  svg:hover{
-    color: #002b3f;
+    color: #5fb3da !important;
 }
 /* End Switch Dark Mode  */
 .dark {
