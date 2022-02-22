@@ -143,7 +143,7 @@ function randomWords() {
   }
   startGame();
 }
-// function to creat final Result
+// function to create final Result
 function finalResult(span, txt, cls) {
   let myspan = document.createElement(span);
   let spanTxt = document.createTextNode(txt);
