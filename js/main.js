@@ -1,348 +1,204 @@
-:root{
-    --main-color: #135a96;
-    --secound-color: #043959;
-    --third-color:#c5d9ed;
-    --four-color:#00131c;
-    --white-color: #fff;
-}
+var words = [];
+var wordsEz = [
+  "Brother",
+  "Short",
+  "Cairo",
+  "Circel",
+  "Like",
+  "Family",
+  "Arrow",
+  "Space",
+  "Slice",
+  "Mark",
+  "Cheese",
+  "School",
+  "Print",
+  "Book",
+  "Egypt",
+  "Mouse",
+  "Italy",
+  "Number",
+  "Data",
+  "Apple",
+  "Forget",
+];
+var wordsNrm = [
+  "Problem",
+  "Tiktok",
+  "Testing",
+  "Loading",
+  "Secound",
+  "Browser",
+  "Smoking",
+  "Example",
+  "Facebook",
+  "Twitter",
+  "Laptop",
+  "Tokyo",
+  "Greece",
+  "Nescafe",
+  "Unknown",
+  "Meating",
+  "Teacher",
+  "Google",
+  "Weather",
+  "Message",
+];
+var wordsHd = [
+  "Developer",
+  "Reloading",
+  "Programing",
+  "Library",
+  "Document",
+  "Barcelona",
+  "Spiderman",
+  "Youtube",
+  "Surprise",
+  "Successful",
+  "Unsuccessful",
+  "Subscribe",
+  "Rewards",
+  "Computer",
+  "Downloads",
+];
+// Default Level
+// Catch Selectors
+let startBtn = document.querySelector(".start");
+let lvlName = document.querySelector(".lvl");
+let lvlSec = document.querySelector(".sec");
+let selectLvl = document.querySelector(".selectLvl");
+let randomWord = document.querySelector(".random-word");
+let input = document.querySelector("input");
+let upComingWords = document.querySelector(".upcoming-words");
+let controlTime = document.querySelector(".time span");
+let scoreGot = document.querySelector(".score .got");
+let scoreTotal = document.querySelector(".score .total");
+let finshWord = document.querySelector(".finalResult");
+let finshWordWin = finshWord.dataset.win;
+let finshWordLose = finshWord.dataset.lose;
+// level of the game
+const lvls = {
+  Easy: 5,
+  Normal: 4,
+  Hard: 3,
+};
 
-*{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+// catch select box
+let levels = document.querySelector("select");
+// function to change Array of [Words]
+function wordsLvl() {
+  if (levels.value === "Easy") {
+    words = wordsEz;
+  } else if (levels.value === "Normal") {
+    words = wordsNrm;
+  } else {
+    words = wordsHd;
+  }
+  scoreTotal.innerHTML = words.length;
 }
-body{
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
-/* start Dark Mode Style  */
-/* Start Switch Dark Mode  */
- .darkOff,
- .darkOn{
-    color: var(--secound-color);
-    transition: 0.3s;
-    cursor: pointer;
-}
-@media (max-width:767px){
-     .settingIcon{
-        width:20px;
-        bottom: 20px;
-    }
-}
- svg:hover{
-    color: #5fb3da !important;
-}
-/* End Switch Dark Mode  */
-.dark {
-    --game-color:#00131c;
-    --main-color: #01263a;
-    --secound-color: #ffffff;
-    --third-color:#c5d9ed;
-    --four-color:#135e96;
-    --white-color: #043959;
-}
-.dark body{
-    background-color: #00131c;
-}
-.dark i{
-    color: #fff;
-}
-.dark i:hover{
-    color: #00131c;
-}
-.dark header,
-.dark .select,
-.dark .upcoming-words span,
-.dark .random-word{
-    color: #fff;
-}
-.dark header .setting a,
-.dark header .setting svg{
-    color: var(--main-color);
-}
-.dark .setting{
-    background-color: var(--third-color);
-}
-.dark .upcoming-words{
-    background-color: #00131c;
-}
-.dark .start
-{
-    background-color: #c5d9ed;
-}
-.dark .selectLvl,
-.dark .top-message{
-background-color:#00131c;
-}
-.dark .start:hover{
-    background-color: #135e96;
-    color: #fff
-}
-.dark .select:hover{
-    color: #fff;
-}
-.dark input{
-    color: #fff;
-    background-color: #01263a;
-    border-color: #fff;
-}
-.dark .control{
-    background-color: #043959;
-    color: #fff;
-}
-/* End Dark Mode Style  */
-body{
-font-family: 'Cairo', 'sans-serif';
-}
-.game{
-    background-color: var(--game-color);
-    min-height: 100vh;
-}
-.container{
-    margin: 0 auto;
-    padding: 0 15px;
-    max-width: 900px;
-}
-@media (max-width:767px) {
-    .container{
-        display: flex;
-        flex-direction: column;
-    }
-}
-header{
-    position: relative;
-    background-color: var(--main-color);
-    color: var(--black-color);
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    font-weight: bold;
-    font-size: 30px;
-    color: var(--white-color);
-    padding: 15px;
-}
-/* start setting Icon  */
+wordsLvl();
 
-header .setting{
-    background-color: var(--third-color);
-    position: absolute;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    align-items: center;
-    right: 5px;
-    bottom: 0; 
-    height: 0;
-    opacity: 0;
-    transition: 0.3s;
-    visibility: hidden;
+levels.addEventListener("change", function () {
+  changeLvl();
+  wordsLvl();
+});
+changeLvl();
+// function to change levels [Easy, normal, Hard]
+function changeLvl() {
+console.log(levels.selectedOptions[0].dataset.level);
+
+  let defaultLvlName = levels.value;
+  let defaultLvlSec = lvls[defaultLvlName];
+  lvlName.innerHTML = levels.selectedOptions[0].dataset.level;
+  lvlSec.innerHTML = defaultLvlSec;
+  controlTime.innerHTML = defaultLvlSec;
 }
-.settingIcon{
-    position: absolute;
-    right: 15px;
-    bottom: 32px;
-    transform: rotateZ(0deg);
-    transition: 0.3s;
-    cursor: pointer;
+// Disable Paste
+input.onpaste = () => {
+  return false;
+};
+// Start Geme...
+startBtn.onclick = function () {
+  this.remove();
+  selectLvl.remove();
+  input.focus();
+  randomWords();
+};
+// Random Words
+function randomWords() {
+  let randomW = words[Math.floor(Math.random() * words.length)];
+  // remove word
+  let wordIndex = words.indexOf(randomW);
+  words.splice(wordIndex, 1);
+  // Ranomd Word
+  randomWord.innerHTML = randomW;
+  // empty upComingWords
+  upComingWords.innerHTML = "";
+  // upComingWords append
+  for (i = 0; i < words.length; i++) {
+    let span = document.createElement("span");
+    let spanTxt = document.createTextNode(words[i]);
+    span.appendChild(spanTxt);
+    upComingWords.appendChild(span);
+  }
+  startGame();
 }
-.iconRotate{
-    transform: rotateZ(180deg);
+// function to creat final Result
+function finalResult(span, txt, cls) {
+  let myspan = document.createElement(span);
+  let spanTxt = document.createTextNode(txt);
+  myspan.className = cls;
+  myspan.appendChild(spanTxt);
+  finshWord.appendChild(myspan);
+  input.remove();
 }
-header .active{
-    bottom: -101px; 
-    height: 101px;
-    visibility: visible;
-    opacity: 1;
+// function saveing score to localStorage
+function saveScore() {
+  window.localStorage.setItem("score", scoreGot.innerHTML);
+  console.log(window.localStorage.getItem("score"));
 }
-header a{
-    text-decoration: none;
-    color: var(--secound-color);
-    font-size: 25px;
-    transition: 0.3s;
-    cursor: pointer;
-}
-header a:hover{
-    color: #7ab0f6;
-}
-@media(max-width:767px){
-    header{
-    text-align: center;
-    font-size: 20px;
+// function start The playGame
+function startGame() {
+  changeLvl();
+  let start = setInterval(() => {
+    controlTime.innerHTML--;
+    if (controlTime.innerHTML === "0") {
+      clearInterval(start);
+      // compare word
+      if (randomWord.innerHTML.toLowerCase() === input.value.toLowerCase()) {
+        input.value = "";
+        scoreGot.innerHTML++;
+        // Recall function
+        if (words.length > 0) {
+          randomWords();
+        } else {
+          finalResult("span", finshWordWin, "Successful");
+        }
+      } else {
+        finalResult("span", finshWordLose, "unSuccessful");
+      }
+      saveScore();
     }
+  }, 1000);
 }
-.top-message{
-    background-color: var(--white-color);
-    margin-top: 10px;
-    padding: 15px;
-    color: var(--main-color);
-    text-align: center;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--secound-color);
+// Start Dark Mode
+let darkOn = document.querySelector(".darkOn");
+let darkOff = document.querySelector(".darkOff");
+darkOn.onclick = function () {
+  DarkMode("none", "block");
+};
+darkOff.addEventListener("click", () => {
+  DarkMode("block", "none");
+});
+function DarkMode(block, none) {
+  document.body.classList.toggle("dark");
+  darkOn.style.display = block;
+  darkOff.style.display = none;
 }
-@media (max-width:767px) {
-    .top-message{
-        font-size: 14px;
-    }
-}
-.top-message span{
-    color: #00adff;
-}
-.top-message span::before{
-    content: "[ ";
-}
-.top-message span::after{
-    content: " ]";
-}
-.selectLvl{
-    background-color: var(--white-color);
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    border-radius: 6px;
-    color: var(--secound-color);
-    font-size: 26px;
-}
-.selectLvl select{
-    background-color: var(--main-color);
-    color:var(--white-color);
-    font-weight: bold;
-    font-size: 18px;
-    text-align: center;
-    margin-left: 15px;
-    border: none;
-    border-radius: 6px;
-    transition: 0.3s;
-    cursor: pointer;
-    outline: none;
-}
-.selectLvl select:hover{
-    background-color: var(--white-color);
-    color: var(--main-color);
-}
-.selectLvl select option{
-    background-color: var(--white-color);
-    color: var(--secound-color);
-}
-button{
-    background-color: var(--secound-color);
-    width: 100%;
-    padding: 15px;
-    font-size: 35px;
-    color: var(--white-color);
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.4s;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
-}
-@media (max-width:767px) {
-    button{
-        padding: 10px;
-        font-size: 25px;
-    margin-bottom: 5px;
-    }
-}
-button:hover{
-    background-color:#01263a ;
-} 
-input{
-    width: 100%;
-    padding: 15px;
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
-    color: var(--secound-color);
-    text-transform: capitalize;
-    outline: none;
-    border: 2px solid var(--main-color);
-    border-radius: 6px;
-    caret-color: var(--main-color);
-    transition: 0.3s;
-}
-@media (max-width:767px) {
-    input{
-        padding: 10px;
-        font-size: 35px;
-    margin-bottom: 5px;
-    }
-}
-input::placeholder{
-    font-size: 16px;
-    color: #aaaa;
-    transition: 0.3s;
-}
-input:focus::placeholder{
-    color:transparent;
-}
-.random-word{
-    text-align: center;
-    color: var(--main-color);
-    padding: 15px;
-    font-size: 60px;
-    font-weight: bold;
-    user-select: none;
-}
-@media (max-width:767px) {
-    .random-word{
-        font-size: 35px;
-    }
-}
-.upcoming-words{
-    background-color: var(--white-color);
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-@media (max-width:767px) {
-    .upcoming-words{
-        padding: 10px;
-        font-size: 14px;
-        order: 2;
-    }
-}
-.upcoming-words span{
-    background-color: var(--main-color);
-    padding: 8px;
-    color: var(--white-color);
-    border-radius: 6px;
-    font-weight: bold;
-    margin: 6px;
-    user-select: none;
-}
-.control{
-    background-color: var(--secound-color);
-    padding: 6px;
-    display: flex;
-    justify-content: space-between;
-    color: var(--white-color);
-    font-weight: bold;
-    border-radius: 6px;
-    margin-bottom: 10px;
-}
-.time span,
-.score span,
-.total{
-    color: var(--third-color);
-}
-.finalResult{
-    background-color: var(--white-color);
-    color:var(--main-color);
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-}
-.finalResult .unSuccessful{
-    color: red;
-}
-.finalResult .Successful{
-    color:#009688;
+// End Dark Mode
+let settingBtn = document.querySelector(".settingIcon");
+let settingPanal = document.querySelector(".setting");
+settingBtn.onclick = function () {
+  settingPanal.classList.toggle("active");
+  settingBtn.classList.toggle("iconRotate");
 }
