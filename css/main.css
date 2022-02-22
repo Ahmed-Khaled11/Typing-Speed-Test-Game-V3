@@ -150,7 +150,7 @@ header .setting{
 }
 @media (max-width:767px) {
     .settingIcon{
-    bottom: 17px;
+    bottom: 17.5px;
         
     }
 }
