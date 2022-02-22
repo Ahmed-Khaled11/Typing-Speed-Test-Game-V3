@@ -59,10 +59,10 @@ body{
 }
 .dark header .setting a,
 .dark header .setting svg{
-    color: var(--main-color);
+    color: #fff;
 }
 .dark .setting{
-    background-color: var(--third-color);
+    background-color: #0d181e;
 }
 .dark .upcoming-words{
     background-color: #00131c;
@@ -147,6 +147,12 @@ header .setting{
     transform: rotateZ(0deg);
     transition: 0.3s;
     cursor: pointer;
+}
+@media (max-width:767px) {
+    .settingIcon{
+    bottom: 17px;
+        
+    }
 }
 .iconRotate{
     transform: rotateZ(180deg);
