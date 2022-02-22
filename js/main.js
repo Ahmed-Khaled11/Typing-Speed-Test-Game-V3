@@ -143,7 +143,7 @@ function randomWords() {
   }
   startGame();
 }
-// function to create final Result
+// function to creat final Result
 function finalResult(span, txt, cls) {
   let myspan = document.createElement(span);
   let spanTxt = document.createTextNode(txt);
@@ -182,11 +182,9 @@ function startGame() {
   }, 1000);
 }
 // Start Dark Mode
-let darkBtn = document.querySelector("svg");
 let darkOn = document.querySelector(".darkOn");
 let darkOff = document.querySelector(".darkOff");
-
-darkBtn.onclick = function () {
+darkOn.onclick = function () {
   DarkMode("none", "block");
 };
 darkOff.addEventListener("click", () => {
@@ -198,3 +196,9 @@ function DarkMode(block, none) {
   darkOff.style.display = none;
 }
 // End Dark Mode
+let settingBtn = document.querySelector(".settingIcon");
+let settingPanal = document.querySelector(".setting");
+settingBtn.onclick = function () {
+  settingPanal.classList.toggle("active");
+  settingBtn.classList.toggle("iconRotate");
+}
