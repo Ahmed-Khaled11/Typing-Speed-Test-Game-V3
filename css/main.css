@@ -16,13 +16,21 @@ body{
     margin: 0;
     overflow: hidden;
 }
+
 /* start Dark Mode Style  */
 /* Start Switch Dark Mode  */
- .darkOff,
- .darkOn{
+ .bi-moon-stars-fill,
+ .bi-brightness-high-fill{
     color: var(--secound-color);
     transition: 0.3s;
     cursor: pointer;
+}
+
+.darkMode{
+    display: none;
+}
+.lightMode{
+    display: block;
 }
 @media (max-width:767px){
      .settingIcon{
@@ -57,13 +65,14 @@ body{
 .dark .random-word{
     color: #fff;
 }
+.dark .setting{
+    background-color: #041925;
+}
 .dark header .setting a,
 .dark header .setting svg{
     color: #fff;
 }
-.dark .setting{
-    background-color: #0d181e;
-}
+
 .dark .upcoming-words{
     background-color: #00131c;
 }
@@ -125,7 +134,7 @@ header{
 /* start setting Icon  */
 
 header .setting{
-    background-color: var(--third-color);
+    background-color: #b8d2ed;
     position: absolute;
     padding: 10px;
     display: flex;
@@ -134,11 +143,10 @@ header .setting{
     border-bottom-left-radius: 10px;
     align-items: center;
     right: 5px;
-    bottom: 0; 
+    bottom: 0px; 
     height: 0;
     opacity: 0;
     transition: 0.3s;
-    visibility: hidden;
 }
 .settingIcon{
     position: absolute;
@@ -150,19 +158,19 @@ header .setting{
 }
 @media (max-width:767px) {
     .settingIcon{
-    bottom: 17.5px;
+    bottom: 18px;
         
     }
-}
-.iconRotate{
-    transform: rotateZ(180deg);
 }
 header .active{
     bottom: -101px; 
     height: 101px;
-    visibility: visible;
     opacity: 1;
 }
+.iconRotate{
+    transform: rotateZ(180deg);
+}
+
 header a{
     text-decoration: none;
     color: var(--secound-color);
@@ -236,7 +244,7 @@ header a:hover{
     color: var(--secound-color);
 }
 button{
-    background-color: var(--secound-color);
+    background-color: #2271b1;
     width: 100%;
     padding: 15px;
     font-size: 35px;
