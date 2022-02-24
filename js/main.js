@@ -182,18 +182,18 @@ function startGame() {
   }, 1000);
 }
 // Start Dark Mode
-let darkOn = document.querySelector(".darkOn");
-let darkOff = document.querySelector(".darkOff");
+let darkOn = document.querySelector(".bi-moon-stars-fill");
+let darkOff = document.querySelector(".bi-brightness-high-fill");
 darkOn.onclick = function () {
-  DarkMode("none", "block");
+  DarkMode();
 };
-darkOff.addEventListener("click", () => {
-  DarkMode("block", "none");
-});
-function DarkMode(block, none) {
+darkOff.onclick = function () {
+  DarkMode();
+};
+function DarkMode() {
   document.body.classList.toggle("dark");
-  darkOn.style.display = block;
-  darkOff.style.display = none;
+  darkOn.classList.toggle("darkMode");
+  darkOff.classList.toggle("lightMode")
 }
 // End Dark Mode
 let settingBtn = document.querySelector(".settingIcon");
