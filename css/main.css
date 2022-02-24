@@ -134,7 +134,7 @@ header{
 /* start setting Icon  */
 
 header .setting{
-    background-color: #b8d2ed;
+    background-color: var(--third-color);
     position: absolute;
     padding: 10px;
     display: flex;
